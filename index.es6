@@ -11,6 +11,7 @@ export default class Teaser extends React.Component {
       link: React.PropTypes.object,
       itemType: React.PropTypes.string,
       itemProp: React.PropTypes.string,
+      teaserId: React.PropTypes.number.isRequired,
     };
   }
   static get defaultProps() {
@@ -20,62 +21,61 @@ export default class Teaser extends React.Component {
     };
   }
   render() {
-    const children = {};
+    const teaserContent = [];
     if (this.props.image) {
-      children.img = (
+      teaserContent.push((
         <img {...this.props.image}
           itemProp="image"
           className="teaser__img"
-        />);
+          key={`teaser__img_${this.props.teaserId}`}
+        />));
     }
     if (this.props.flyTitle) {
-      children.flyTitle = (
+      teaserContent.push((
         <h2
           className="teaser__flytitle"
           itemProp="alternativeHeadline"
+          key={`teaser__flytitle_${this.props.teaserId}`}
         >{this.props.flyTitle}</h2>
-      );
+      ));
     }
     if (this.props.title) {
-      children.title = (
+      teaserContent.push((
         <h1
           className="teaser__title"
           itemProp="headline"
-        >{this.props.title}</h1>);
+          key={`teaser__title_${this.props.teaserId}`}
+        >{this.props.title}</h1>));
     }
     if (this.props.dateTime) {
-      children.dateTime = (
+      teaserContent.push((
         <time
           className="teaser__datetime"
           itemProp="dateCreated"
           dateTime={this.props.dateTime}
-        >{this.props.dateTime}</time>);
+          key={`teaser__datetime_${this.props.teaserId}`}
+        >{this.props.dateTime}</time>));
     }
     if (this.props.text) {
-      children.text = (
+      teaserContent.push((
         <div
           className="teaser__text"
           itemProp="description"
-        >{this.props.text}</div>);
-    }
-    let teaserContent = '';
-    if (this.props.link) {
-      teaserContent = (
-        <a {...this.props.link}
-          className="teaser__link"
-          itemProp="url"
-        >
-        {React.addons.createFragment(children)}
-        </a>);
-    } else {
-      teaserContent = React.addons.createFragment(children);
+          key={`teaser__text_${this.props.teaserId}`}
+        >{this.props.text}</div>));
     }
 
     return (
       <article
         className="teaser"
         itemScope itemType={this.props.itemType} itemProp={this.props.itemProp}
-      >{teaserContent}
+        role="article"
+      >
+      {(this.props.link) ?
+        (<a {...this.props.link}
+          className="teaser__link"
+          itemProp="url"
+         >{teaserContent}</a>) : teaserContent}
       </article>
     );
   }

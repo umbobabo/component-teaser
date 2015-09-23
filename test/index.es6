@@ -8,13 +8,21 @@ describe(`A teaser`, () => {
       Teaser.should.be.a('function').and.respondTo('render');
     });
     it(`it's renders a React element`, () => {
-      React.isValidElement(<Teaser/>).should.equal(true);
+      React.isValidElement(
+        <Teaser
+          title="Required"
+          teaserId={1}
+        />).should.equal(true);
     });
   });
   describe(`Expose a set of propTypes`, () => {
     it(`it renders a flytitle`, () => {
       const teaser = TestUtils.renderIntoDocument(
-        <Teaser flyTitle="flytitle" title="Required"/>
+        <Teaser
+          flyTitle="flytitle"
+          title="Required"
+          teaserId={1}
+        />
       );
       const elm = TestUtils.findRenderedDOMComponentWithClass(
       teaser, 'teaser__flytitle');
@@ -23,7 +31,7 @@ describe(`A teaser`, () => {
     });
     it(`it renders a title`, () => {
       const teaser = TestUtils.renderIntoDocument(
-        <Teaser title="title"/>
+        <Teaser title="title" teaserId={1}/>
       );
       const elm = TestUtils.findRenderedDOMComponentWithClass(
       teaser, 'teaser__title');
@@ -32,7 +40,11 @@ describe(`A teaser`, () => {
     });
     it(`it renders a dateTime`, () => {
       const teaser = TestUtils.renderIntoDocument(
-        <Teaser dateTime="datetime" title="Required"/>
+        <Teaser
+          dateTime="datetime"
+          title="Required"
+          teaserId={1}
+        />
       );
       const elm = TestUtils.findRenderedDOMComponentWithClass(
       teaser, 'teaser__datetime');
@@ -41,7 +53,11 @@ describe(`A teaser`, () => {
     });
     it(`it renders a text`, () => {
       const teaser = TestUtils.renderIntoDocument(
-        <Teaser text="Teaser text" title="Required"/>
+        <Teaser
+          text="Teaser text"
+          title="Required"
+          teaserId={1}
+        />
       );
       const elm = TestUtils.findRenderedDOMComponentWithClass(
       teaser, 'teaser__text');
@@ -50,17 +66,18 @@ describe(`A teaser`, () => {
     });
     it(`it renders an image`, () => {
       const img = {
-        src: `http://www.myfakeimg.com`,
+        src: `//cdn.static-economist.com/sites/all/themes/econfinal/images/svg/logo.svg`,
         alt: `Example`,
       };
       const teaser = TestUtils.renderIntoDocument(
         <Teaser image={img}
           title="Required"
+          teaserId={1}
         />);
       const elm = TestUtils.findRenderedDOMComponentWithClass(
       teaser, 'teaser__img');
       elm.props.className.should.be.equal('teaser__img');
-      elm.props.src.should.be.equal('http://www.myfakeimg.com');
+      elm.props.src.should.be.equal('//cdn.static-economist.com/sites/all/themes/econfinal/images/svg/logo.svg');
       elm.props.alt.should.be.equal('Example');
     });
     it(`it renders a link`, () => {
@@ -68,6 +85,7 @@ describe(`A teaser`, () => {
         <Teaser
           link={{ href: `http://www.economist.com` }}
           title="Required"
+          teaserId={1}
         />);
       const elm = TestUtils.findRenderedDOMComponentWithClass(
       teaser, 'teaser__link');
