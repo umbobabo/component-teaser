@@ -65,18 +65,22 @@ export default class Teaser extends React.Component {
         >{this.props.text}</div>));
     }
 
+    let content = {};
+    if (this.props.link) {
+      content = (
+        <a {...this.props.link}
+          className="teaser__link"
+          itemProp="url"
+        >{teaserContent}</a>);
+    } else {
+      content = teaserContent;
+    }
     return (
       <article
         className="teaser"
         itemScope itemType={this.props.itemType} itemProp={this.props.itemProp}
         role="article"
-      >
-      {(this.props.link) ?
-        (<a {...this.props.link}
-          className="teaser__link"
-          itemProp="url"
-         >{teaserContent}</a>) : teaserContent}
-      </article>
+      >{content}</article>
     );
   }
 }
