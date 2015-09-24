@@ -2,7 +2,7 @@
   font-size: 1rem;
 }
 
-.teaser__link {
+.teaser__group-text {
   display: flex;
   flex-direction: column;
 }
