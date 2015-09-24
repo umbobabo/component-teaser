@@ -1,0 +1,15 @@
+@import './index.css';
+@import '@economist/component-typography';
+@import '@economist/component-palette';
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.teaser {
+  font-family: var(--fontfamily-body);
+}

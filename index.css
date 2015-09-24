@@ -1,0 +1,36 @@
+.teaser {
+  font-size: 1rem;
+}
+
+.teaser__link {
+  display: flex;
+  flex-direction: column;
+}
+
+.teaser__title {
+  font-size: var(--text-size-step-3);
+  line-height: var(--text-line-height-body-bold-on-step-3);
+  color: var(--color-beijing);
+  order: 2;
+}
+
+.teaser__flytitle {
+  font-size: var(--text-size-step-2);
+  line-height: var(--text-line-height-body-on-step-2);
+  color: var(--color-economist);
+  order: 1;
+}
+
+.teaser__text {
+  font-size: var(--text-size-step-1);
+  line-height: var(--text-line-height-body-on-step-1);
+  color: var(--color-beijing);
+  order: 3;
+}
+
+.teaser__datetime {
+  font-size: var(--text-size-step--1);
+  line-height: var(--text-line-height-body-on-step-1);
+  color: var(--color-london);
+  order: 4;
+}
