@@ -5,7 +5,7 @@ const today = new Date();
 export default (
   <Teaser
     image={{
-      src: `./example/teaser.png`,
+      src: `./assets/teaser.png`,
       title: `Just an image`,
     }}
     flyTitle="The UN, religion and development"

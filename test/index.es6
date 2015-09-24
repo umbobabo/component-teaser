@@ -40,17 +40,21 @@ describe(`A teaser`, () => {
     });
     it(`it renders a dateTime`, () => {
       const today = new Date();
+      function dateFormat(date) {
+        return date.toString();
+      }
       const teaser = TestUtils.renderIntoDocument(
         <Teaser
           dateTime={today}
           title="Required"
           teaserId={1}
+          dateFormat={dateFormat}
         />
       );
       const elm = TestUtils.findRenderedDOMComponentWithClass(
       teaser, 'teaser__datetime');
       elm.props.className.should.be.equal('teaser__datetime');
-      elm.props.children.should.be.equal('datetime');
+      elm.props.children.should.be.equal(today.toString());
     });
     it(`it renders a text`, () => {
       const teaser = TestUtils.renderIntoDocument(
