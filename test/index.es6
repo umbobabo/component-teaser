@@ -39,9 +39,10 @@ describe(`A teaser`, () => {
       elm.props.children.should.be.equal('title');
     });
     it(`it renders a dateTime`, () => {
+      const today = new Date();
       const teaser = TestUtils.renderIntoDocument(
         <Teaser
-          dateTime="datetime"
+          dateTime={today}
           title="Required"
           teaserId={1}
         />

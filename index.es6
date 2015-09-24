@@ -6,18 +6,46 @@ export default class Teaser extends React.Component {
       image: React.PropTypes.object,
       flyTitle: React.PropTypes.string,
       title: React.PropTypes.string.isRequired,
-      dateTime: React.PropTypes.string,
+      dateTime: React.PropTypes.instanceOf(Date),
       text: React.PropTypes.string,
       link: React.PropTypes.object,
       itemType: React.PropTypes.string,
       itemProp: React.PropTypes.string,
       teaserId: React.PropTypes.number.isRequired,
+      dateFormat: React.PropTypes.instanceOf(Function),
     };
   }
   static get defaultProps() {
     return {
       itemType: 'http://schema.org/Article',
       itemProp: 'article',
+      dateFormat: (date) => {
+        // Sep 19th 2015, 9:49
+        const shortMonthList = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Sep',
+        'Oct', 'Nov', 'Dec' ];
+        function addPostFix(day) {
+          const daystr = day.toString();
+          const lastChar = daystr.charAt(daystr.length - 1);
+          let postFix = '';
+          switch (lastChar) {
+            case '1':
+              postFix = 'st';
+              break;
+            case '2':
+              postFix = 'nd';
+              break;
+            case '3':
+              postFix = 'rd';
+              break;
+            default:
+              postFix = 'th';
+              break;
+          }
+          return `${day}${postFix}`;
+        }
+        return `${shortMonthList[date.getMonth()]} ${addPostFix(date.getDay())}
+        ${date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}`;
+      },
     };
   }
   render() {
@@ -54,7 +82,7 @@ export default class Teaser extends React.Component {
           itemProp="dateCreated"
           dateTime={this.props.dateTime}
           key={`teaser__datetime_${this.props.teaserId}`}
-        >{this.props.dateTime}</time>));
+        >{this.props.dateFormat(this.props.dateTime)}</time>));
     }
     if (this.props.text) {
       teaserContent.push((
