@@ -3,16 +3,16 @@ import React from 'react';
 export default class Teaser extends React.Component {
   static get propTypes() {
     return {
+      teaserId: React.PropTypes.number.isRequired,
       image: React.PropTypes.object,
       flyTitle: React.PropTypes.string,
       title: React.PropTypes.string.isRequired,
       dateTime: React.PropTypes.instanceOf(Date),
+      dateFormat: React.PropTypes.instanceOf(Function),
       text: React.PropTypes.string,
       link: React.PropTypes.object,
       itemType: React.PropTypes.string,
       itemProp: React.PropTypes.string,
-      teaserId: React.PropTypes.number.isRequired,
-      dateFormat: React.PropTypes.instanceOf(Function),
     };
   }
   static get defaultProps() {
@@ -21,8 +21,6 @@ export default class Teaser extends React.Component {
       itemProp: 'article',
       dateFormat: (date) => {
         // Sep 19th 2015, 9:49
-        const shortMonthList = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Sep',
-        'Oct', 'Nov', 'Dec' ];
         function addPostFix(day) {
           const daystr = day.toString();
           const lastChar = daystr.charAt(daystr.length - 1);
@@ -43,8 +41,11 @@ export default class Teaser extends React.Component {
           }
           return `${day}${postFix}`;
         }
-        return `${shortMonthList[date.getMonth()]} ${addPostFix(date.getDay())}
-        ${date.getFullYear()}, ${date.getHours()}:${date.getMinutes()}`;
+        const shortMonth = { month: `short` };
+        return `${date.toLocaleString(`en-GB`, shortMonth)}
+                ${addPostFix(date.getDay())}
+                ${date.getFullYear()},
+                ${date.getHours()}:${date.getMinutes()}`;
       },
     };
   }
