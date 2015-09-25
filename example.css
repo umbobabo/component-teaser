@@ -1,10 +1,7 @@
 @import './index.css';
 @import '@economist/component-typography';
 @import '@economist/component-palette';
-
-ul {
-  list-style: none;
-}
+@import '@economist/component-grid';
 
 a {
   text-decoration: none;

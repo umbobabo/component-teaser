@@ -54,11 +54,13 @@ export default class Teaser extends React.Component {
     const groups = [];
     if (this.props.image) {
       groups.push((
-        <img {...this.props.image}
-          itemProp="image"
-          className="teaser__img"
-          key={`teaser__img_${this.props.teaserId}`}
-        />));
+        <div className="teaser__group-image">
+          <img {...this.props.image}
+            itemProp="image"
+            className="teaser__img"
+            key={`teaser__img_${this.props.teaserId}`}
+          />
+        </div>));
     }
     if (this.props.flyTitle) {
       teaserContent.push((
