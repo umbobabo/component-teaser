@@ -1,4 +1,3 @@
-@import './index.css';
 @import '@economist/component-typography';
 @import '@economist/component-palette';
 @import '@economist/component-grid';
@@ -10,3 +9,19 @@ a {
 .teaser {
   font-family: var(--fontfamily-body);
 }
+
+html {
+  line-height: var(--text-line-height-body-on-step-0);
+  font-size: 18px;
+}
+
+body {
+  background: white;
+}
+
+@media screen and (min-width: 800px) {
+  html {
+    font-size: 20px;
+  }
+}
+@import './index.css';
