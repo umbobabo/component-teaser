@@ -51,13 +51,16 @@ export default class Teaser extends React.Component {
   }
   render() {
     const teaserContent = [];
+    const groups = [];
     if (this.props.image) {
-      teaserContent.push((
-        <img {...this.props.image}
-          itemProp="image"
-          className="teaser__img"
-          key={`teaser__img_${this.props.teaserId}`}
-        />));
+      groups.push((
+        <div className="teaser__group-image">
+          <img {...this.props.image}
+            itemProp="image"
+            className="teaser__img"
+            key={`teaser__img_${this.props.teaserId}`}
+          />
+        </div>));
     }
     if (this.props.flyTitle) {
       teaserContent.push((
@@ -93,6 +96,7 @@ export default class Teaser extends React.Component {
           key={`teaser__text_${this.props.teaserId}`}
         >{this.props.text}</div>));
     }
+    groups.push(<div className="teaser__group-text">{teaserContent}</div>);
 
     let content = {};
     if (this.props.link) {
@@ -100,9 +104,9 @@ export default class Teaser extends React.Component {
         <a {...this.props.link}
           className="teaser__link"
           itemProp="url"
-        >{teaserContent}</a>);
+        >{groups}</a>);
     } else {
-      content = teaserContent;
+      content = groups;
     }
     return (
       <article
