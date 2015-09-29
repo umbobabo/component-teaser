@@ -41,11 +41,14 @@ export default class Teaser extends React.Component {
           }
           return `${day}${postFix}`;
         }
-        const shortMonth = { month: `short` };
-        return `${date.toLocaleString(`en-GB`, shortMonth)}
+        const shortMonthList = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
+        let minutes = date.getMinutes() < 10 ? '0' : '';
+        minutes += date.getMinutes();
+        return `${shortMonthList[date.getMonth()]}
                 ${addPostFix(date.getDay())}
                 ${date.getFullYear()},
-                ${date.getHours()}:${date.getMinutes()}`;
+                ${date.getHours()}:${minutes}`;
       },
     };
   }
