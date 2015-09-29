@@ -42,7 +42,7 @@ export default class Teaser extends React.Component {
           return `${day}${postFix}`;
         }
         const shortMonthList = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-        'Jul', 'Sep', 'Oct', 'Nov', 'Dec' ];
+        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
         return `${shortMonthList[date.getMonth()]}
                 ${addPostFix(date.getDay())}
                 ${date.getFullYear()},
