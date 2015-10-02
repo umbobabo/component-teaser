@@ -11,7 +11,7 @@ describe(`A teaser`, () => {
       React.isValidElement(
         <Teaser
           title="Required"
-          teaserId={1}
+          teaserId={'1'}
         />).should.equal(true);
     });
   });
@@ -21,7 +21,7 @@ describe(`A teaser`, () => {
         <Teaser
           flyTitle="flytitle"
           title="Required"
-          teaserId={1}
+          teaserId={'1'}
         />
       );
       const elm = TestUtils.findRenderedDOMComponentWithClass(
@@ -31,7 +31,7 @@ describe(`A teaser`, () => {
     });
     it(`it renders a title`, () => {
       const teaser = TestUtils.renderIntoDocument(
-        <Teaser title="title" teaserId={1}/>
+        <Teaser title="title" teaserId={'1'}/>
       );
       const elm = TestUtils.findRenderedDOMComponentWithClass(
       teaser, 'teaser__title');
@@ -47,7 +47,7 @@ describe(`A teaser`, () => {
         <Teaser
           dateTime={today}
           title="Required"
-          teaserId={1}
+          teaserId={'1'}
           dateFormat={dateFormat}
         />
       );
@@ -61,13 +61,13 @@ describe(`A teaser`, () => {
         <Teaser
           text="Teaser text"
           title="Required"
-          teaserId={1}
+          teaserId={'1'}
         />
       );
       const elm = TestUtils.findRenderedDOMComponentWithClass(
       teaser, 'teaser__text');
       elm.props.className.should.be.equal('teaser__text');
-      elm.props.children.should.be.equal('Teaser text');
+      elm.props.dangerouslySetInnerHTML['__html'].should.be.equal('Teaser text');
     });
     it(`it renders an image`, () => {
       const img = {
@@ -77,7 +77,7 @@ describe(`A teaser`, () => {
       const teaser = TestUtils.renderIntoDocument(
         <Teaser image={img}
           title="Required"
-          teaserId={1}
+          teaserId={'1'}
         />);
       const elm = TestUtils.findRenderedDOMComponentWithClass(
       teaser, 'teaser__img');
@@ -90,7 +90,7 @@ describe(`A teaser`, () => {
         <Teaser
           link={{ href: `http://www.economist.com` }}
           title="Required"
-          teaserId={1}
+          teaserId={'1'}
         />);
       const elm = TestUtils.findRenderedDOMComponentWithClass(
       teaser, 'teaser__link');

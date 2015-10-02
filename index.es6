@@ -3,7 +3,7 @@ import React from 'react';
 export default class Teaser extends React.Component {
   static get propTypes() {
     return {
-      teaserId: React.PropTypes.number.isRequired,
+      teaserId: React.PropTypes.string.isRequired,
       image: React.PropTypes.object,
       flyTitle: React.PropTypes.string,
       title: React.PropTypes.string.isRequired,
@@ -97,7 +97,10 @@ export default class Teaser extends React.Component {
           className="teaser__text"
           itemProp="description"
           key={`teaser__text_${this.props.teaserId}`}
-        >{this.props.text}</div>));
+          dangerouslySetInnerHTML={{
+            '__html': this.props.text
+          }}
+        />));
     }
     groups.push(<div className="teaser__group-text">{teaserContent}</div>);
 
