@@ -97,7 +97,10 @@ export default class Teaser extends React.Component {
           className="teaser__text"
           itemProp="description"
           key={`teaser__text_${this.props.teaserId}`}
-        >{this.props.text}</div>));
+          dangerouslySetInnerHTML={{
+            '__html': this.props.text
+          }}
+        />));
     }
     groups.push(<div className="teaser__group-text">{teaserContent}</div>);
 
