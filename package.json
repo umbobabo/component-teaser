@@ -16,7 +16,6 @@
   "files": [
     "*.js",
     "*.css",
-    "assets/*",
     "!karma.conf.js",
     "!testbundle.js"
   ],
@@ -101,7 +100,7 @@
   "config": {
     "lint_opts": "--ignore-path .gitignore --ext .es6",
     "testbundle_opts": "-r react -r .:./index.es6 -r ./example.js:example ./test/index.js -o testbundle.js",
-    "ghpages_files": "*.html *.css *.js assets/"
+    "ghpages_files": "*.html *.css *.js"
   },
   "scripts": {
     "ci": "./build.sh",
