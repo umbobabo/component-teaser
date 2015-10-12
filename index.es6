@@ -97,8 +97,9 @@ export default class Teaser extends React.Component {
           className="teaser__text"
           itemProp="description"
           key={`teaser__text_${this.props.teaserId}`}
+          /* eslint-disable react/no-danger */
           dangerouslySetInnerHTML={{
-            '__html': this.props.text
+            '__html': this.props.text,
           }}
         />));
     }

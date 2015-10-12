@@ -67,6 +67,7 @@ describe(`A teaser`, () => {
       const elm = TestUtils.findRenderedDOMComponentWithClass(
       teaser, 'teaser__text');
       elm.props.className.should.be.equal('teaser__text');
+      /* eslint-disable dot-notation */
       elm.props.dangerouslySetInnerHTML['__html'].should.be.equal('Teaser text');
     });
     it(`it renders an image`, () => {

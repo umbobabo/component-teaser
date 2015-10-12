@@ -1,6 +1,6 @@
 {
   "name": "@economist/component-teaser",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Reusable teaser",
   "author": "The Economist (http://economist.com)",
   "license": "MIT",
@@ -71,9 +71,6 @@
       },
       {
         "contents": "if(document.getElementById('mocha')){mocha.checkLeaks();mocha.run();}"
-      },
-      {
-        "contents": "</script><!-- lol html injection -->    <script type=\"text/javascript\"> (function() { var path = '//easy.myfonts.net/v2/js?sid=207020(font-family=FF+Milo+Serif+Pro)&sid=207025(font-family=FF+Milo+Serif+Pro+Med+Italic)&sid=207029(font-family=FF+Milo+Serif+Pro+Bold)&key=ADKczqjSur', protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'), trial = document.createElement('script'); trial.type = 'text/javascript'; trial.async = true; trial.src = protocol + path; var head = document.getElementsByTagName(\"head\")[0]; head.appendChild(trial); })(); </script> <script type=\"text/javascript\"> (function() { var path = '//easy.myfonts.net/v2/js?sid=274518(font-family=Halifax+Regular)&sid=274519(font-family=Halifax+Light)&sid=274524(font-family=Halifax+Bold)&key=LUwLgIpMrH', protocol = ('https:' == document.location.protocol ? 'https:' : 'http:'), trial = document.createElement('script'); trial.type = 'text/javascript'; trial.async = true; trial.src = protocol + path; var head = document.getElementsByTagName(\"head\")[0]; head.appendChild(trial); })(); </script>     <script>/* end my html injection */"
       }
     ],
     "sections": [
@@ -118,8 +115,8 @@
     "doc:watch": "parallelshell 'npm run doc:html:watch' 'npm run doc:js:watch' 'npm run doc:css:watch'",
     "lint": "eslint $npm_package_config_lint_opts .",
     "pages": "git stash save -u pages-stash && git branch -D gh-pages; git checkout --orphan gh-pages && git add -f $npm_package_config_ghpages_files && git commit -anm'ghpages' && git push origin HEAD:gh-pages -f",
-    "prepages": "npm run doc",
-    "prepublish": "babel . -d . -x .es6 --ignore node_modules",
+    "prepages": "npm run build && npm run doc",
+    "prepublish": "babel . -d . -x .es6",
     "prepublish:watch": "npm run prepublish -- -w",
     "pretest": "npm run lint",
     "provision": "devpack-configure ./package.json",
@@ -128,10 +125,7 @@
     "watch": "parallelshell 'npm run doc:watch' 'npm run prepublish:watch' 'npm run serve'"
   },
   "dependencies": {
-    "react": "^0.14.0-rc||^0.14.0-rc"
-  },
-  "peerDependencies": {
-    "react": "^0.14.0-rc||^0.14.0-rc"
+    "react": "^0.13.3"
   },
   "devDependencies": {
     "@economist/component-devpack": "^3.4.2",
@@ -159,6 +153,9 @@
     "parallelshell": "^2.0.0",
     "pre-commit": "^1.0.10",
     "watchify": "^3.4.0"
+  },
+  "peerDependencies": {
+    "react": "^0.14.0-rc||^0.14.0-rc"
   },
   "pre-commit": [
     "lint"
