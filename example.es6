@@ -5,7 +5,7 @@ const today = new Date();
 export default (
   <Teaser
     image={{
-      src: `./assets/teaser.png`,
+      src: `http://cdn.static-economist.com/sites/default/files/imagecache/full-width/20151017_BLP560.jpg`,
       title: `Just an image`,
     }}
     flyTitle="The UN, religion and development"
