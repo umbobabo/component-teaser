@@ -113,7 +113,11 @@ export default class Teaser extends React.Component {
           itemProp="url"
         >{groups}</a>);
     } else {
-      content = groups;
+      content = (
+        <div className="teaser__wrapper">
+          {groups}
+        </div>
+      );
     }
     return (
       <article

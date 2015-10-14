@@ -70,7 +70,8 @@
 }
 
 @media (--viewport-big) {
-  .teaser__link {
+  .teaser__link,
+  .teaser__wrapper {
     display: flex;
   }
   .teaser__group-image {
