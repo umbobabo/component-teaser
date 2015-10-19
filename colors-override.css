@@ -1,9 +1,0 @@
-/* Import this file to test colors override */
-
-:root {
-  --teaser-color-title: green;
-  --teaser-color-flytitle: blue;
-  --teaser-color-text: yellow;
-  --teaser-color-datetime: black;
-  --teaser-background-color-datetime: purple;
-}
