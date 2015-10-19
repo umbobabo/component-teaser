@@ -63,7 +63,7 @@
 }
 
 .teaser__img {
-  min-width: 200px;
+  min-width: var(--teaser-min-img-width, 200px);
   width: 70%;
   margin-bottom: var(--grid-spacing-sheep);
   border: none;
@@ -79,6 +79,10 @@
   }
   .teaser__img {
     width: 100%;
+  }
+  .teaser__group-image {
     max-width: 15em;
+    min-width: var(--teaser-min-img-width, 200px);
+    width: 30%;
   }
 }
