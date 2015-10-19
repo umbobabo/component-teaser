@@ -1,3 +1,7 @@
+@import '@economist/component-typography';
+@import '@economist/component-palette';
+@import '@economist/component-grid';
+
 @custom-media --viewport-big (width >= 36rem);
 
 .teaser {
@@ -16,7 +20,7 @@
   letter-spacing: var(--text-letter-spacing-body-bold-on-step-3);
   font-weight: bold;
   font-family: 'Halifax Bold';
-  color: var(--color-beijing);
+  color: var(--teaser-color-title, var(--color-beijing));
   order: 2;
   margin: 0;
 }
@@ -26,7 +30,7 @@
   line-height: var(--text-line-height-body-on-step-0);
   font-weight: lighter;
   font-family: 'Halifax Light';
-  color: var(--color-economist);
+  color: var(--teaser-color-flytitle, var(--color-economist));
   order: 1;
   margin: 0;
   margin-bottom: var(--grid-spacing-mouse);
@@ -37,7 +41,7 @@
   line-height: var(--text-line-height-body-light-on-step-0);
   font-weight: lighter;
   font-family: 'Halifax Light';
-  color: var(--color-beijing);
+  color: var(--teaser-color-text, var(--color-beijing));
   order: 3;
   margin-top: var(--grid-spacing-rabbit);
 }
@@ -48,7 +52,7 @@
   letter-spacing: var(--text-letter-spacing-body-light-on-step--2);
   font-weight: lighter;
   font-family: 'Halifax Light';
-  color: var(--color-moscow);
+  color: var(--teaser-color-datetime, var(--color-moscow));
   order: 4;
   margin-top: var(--grid-spacing-rabbit);
 }
@@ -57,7 +61,7 @@
   content: '';
   width: 3rem;
   height: 0.1rem;
-  background-color: var(--color-berlin);
+  background-color: var(--teaser-background-color-datetime, var(--color-berlin));
   display: block;
   margin-bottom: var(--grid-spacing-hedgehog);
 }

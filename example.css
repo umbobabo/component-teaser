@@ -1,6 +1,5 @@
-@import '@economist/component-typography';
-@import '@economist/component-palette';
-@import '@economist/component-grid';
+/* Import this file to test colors override */
+/* @import 'colors-override.css'; */
 
 a {
   text-decoration: none;
