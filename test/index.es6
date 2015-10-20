@@ -1,7 +1,7 @@
 import Teaser from '../index.es6';
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 
-const TestUtils = React.addons.TestUtils;
 describe(`A teaser`, () => {
   describe(`it's a React component`, () => {
     it('is compatible with React.Component', () => {
