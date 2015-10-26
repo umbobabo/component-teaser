@@ -9,6 +9,7 @@ export default (
         src: `http://cdn.static-economist.com/sites/default/files/imagecache/full-width/20151017_BLP560.jpg`,
         title: `Just an image`,
       }}
+      section="International"
       flyTitle="The UN, religion and development"
       title="Faith and secular global bodies learn to live together"
       dateTime={today}
