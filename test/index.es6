@@ -16,6 +16,19 @@ describe(`A teaser`, () => {
     });
   });
   describe(`Expose a set of propTypes`, () => {
+    it(`it renders a section`, () => {
+      const teaser = TestUtils.renderIntoDocument(
+        <Teaser
+          section="section"
+          title="Required"
+          teaserId={'1'}
+        />
+      );
+      const elm = TestUtils.findRenderedDOMComponentWithClass(
+      teaser, 'teaser__section');
+      elm.props.className.should.be.equal('teaser__section');
+      elm.props.children.should.be.equal('section');
+    });
     it(`it renders a flytitle`, () => {
       const teaser = TestUtils.renderIntoDocument(
         <Teaser

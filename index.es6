@@ -5,6 +5,7 @@ export default class Teaser extends React.Component {
     return {
       teaserId: React.PropTypes.string.isRequired,
       image: React.PropTypes.object,
+      section: React.PropTypes.string,
       flyTitle: React.PropTypes.string,
       title: React.PropTypes.string.isRequired,
       dateTime: React.PropTypes.instanceOf(Date),
@@ -64,6 +65,15 @@ export default class Teaser extends React.Component {
             key={`teaser__img_${this.props.teaserId}`}
           />
         </div>));
+    }
+    if (this.props.section) {
+      teaserContent.push((
+        <h3
+          className="teaser__section"
+          itemProp="section"
+          key={`teaser__section_${this.props.teaserId}`}
+        >{this.props.section}</h3>
+      ));
     }
     if (this.props.flyTitle) {
       teaserContent.push((
