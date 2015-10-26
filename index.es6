@@ -68,11 +68,11 @@ export default class Teaser extends React.Component {
     }
     if (this.props.section) {
       teaserContent.push((
-        <h2
+        <h3
           className="teaser__section"
           itemProp="section"
           key={`teaser__section_${this.props.teaserId}`}
-        >{this.props.section}</h2>
+        >{this.props.section}</h3>
       ));
     }
     if (this.props.flyTitle) {
