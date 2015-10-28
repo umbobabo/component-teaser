@@ -60,17 +60,20 @@ export default class Teaser extends React.Component {
   render() {
     const teaserContent = [];
     const groups = [];
-    if (this.props.image && this.props.image.src) {
-      groups.push((
-        <div className="teaser__group-image"
-          key={`teaser__group-image_${this.props.teaserId}`}
-        >
-          <img {...this.props.image}
-            itemProp="image"
-            className="teaser__img"
-          />
-        </div>));
+    const imageSrc = this.props.image && this.props.image.src;
+    let imageClasses = ['teaser__group-image'];
+    if (imageSrc) {
+      imageClasses = imageClasses.concat(['teaser__group-image--empty']);
     }
+    const image = imageSrc ?
+      (<img {...this.props.image} itemProp="image" className="teaser__img" />) :
+      null;
+    groups.push((
+      <div className={imageClasses.join(' ')}
+        key={`teaser__group-image_${this.props.teaserId}`}
+      >
+        {image}
+      </div>));
     if (this.props.section) {
       teaserContent.push((
         <h3
