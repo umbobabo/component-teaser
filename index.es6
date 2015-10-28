@@ -4,14 +4,18 @@ export default class Teaser extends React.Component {
   static get propTypes() {
     return {
       teaserId: React.PropTypes.string.isRequired,
-      image: React.PropTypes.object,
+      image: React.PropTypes.shape({
+        src: React.PropTypes.string,
+      }),
       section: React.PropTypes.string,
       flyTitle: React.PropTypes.string,
       title: React.PropTypes.string.isRequired,
       dateTime: React.PropTypes.instanceOf(Date),
-      dateFormat: React.PropTypes.instanceOf(Function),
+      dateFormat: React.PropTypes.func,
       text: React.PropTypes.string,
-      link: React.PropTypes.object,
+      link: React.PropTypes.shape({
+        href: React.PropTypes.string,
+      }),
       itemType: React.PropTypes.string,
       itemProp: React.PropTypes.string,
     };
@@ -56,17 +60,20 @@ export default class Teaser extends React.Component {
   render() {
     const teaserContent = [];
     const groups = [];
-    if (this.props.image) {
-      groups.push((
-        <div className="teaser__group-image"
-          key={`teaser__group-image_${this.props.teaserId}`}
-        >
-          <img {...this.props.image}
-            itemProp="image"
-            className="teaser__img"
-          />
-        </div>));
+    const imageSrc = this.props.image && this.props.image.src;
+    let imageClasses = ['teaser__group-image'];
+    if (imageSrc) {
+      imageClasses = imageClasses.concat(['teaser__group-image--empty']);
     }
+    const image = imageSrc ?
+      (<img {...this.props.image} itemProp="image" className="teaser__img" />) :
+      null;
+    groups.push((
+      <div className={imageClasses.join(' ')}
+        key={`teaser__group-image_${this.props.teaserId}`}
+      >
+        {image}
+      </div>));
     if (this.props.section) {
       teaserContent.push((
         <h3
