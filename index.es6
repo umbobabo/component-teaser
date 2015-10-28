@@ -4,14 +4,18 @@ export default class Teaser extends React.Component {
   static get propTypes() {
     return {
       teaserId: React.PropTypes.string.isRequired,
-      image: React.PropTypes.object,
+      image: React.PropTypes.shape({
+        src: React.PropTypes.string,
+      }),
       section: React.PropTypes.string,
       flyTitle: React.PropTypes.string,
       title: React.PropTypes.string.isRequired,
       dateTime: React.PropTypes.instanceOf(Date),
-      dateFormat: React.PropTypes.instanceOf(Function),
+      dateFormat: React.PropTypes.func,
       text: React.PropTypes.string,
-      link: React.PropTypes.object,
+      link: React.PropTypes.shape({
+        href: React.PropTypes.string,
+      }),
       itemType: React.PropTypes.string,
       itemProp: React.PropTypes.string,
     };
@@ -56,7 +60,7 @@ export default class Teaser extends React.Component {
   render() {
     const teaserContent = [];
     const groups = [];
-    if (this.props.image) {
+    if (this.props.image && this.props.image.src) {
       groups.push((
         <div className="teaser__group-image"
           key={`teaser__group-image_${this.props.teaserId}`}
