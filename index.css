@@ -8,6 +8,10 @@
   font-size: 1rem;
 }
 
+.teaser__link {
+  text-decoration: none;
+}
+
 .teaser__group-text {
   display: flex;
   flex-direction: column;
