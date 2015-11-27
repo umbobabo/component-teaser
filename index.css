@@ -6,6 +6,7 @@
 
 .teaser {
   font-size: 1rem;
+  overflow: hidden;
 }
 
 .teaser__link {
