@@ -18,9 +18,9 @@
 }
 
 .teaser__title {
-  font-size: var(--text-size-step-3);
-  line-height: var(--text-line-height-body-bold-on-step-3);
-  letter-spacing: var(--text-letter-spacing-body-bold-on-step-3);
+  font-size: var(--text-size-step-1);
+  line-height: var(--text-line-height-body-bold-on-step-1);
+  letter-spacing: var(--text-letter-spacing-body-bold-on-step-1);
   font-weight: bold;
   font-family: 'Halifax Bold';
   color: var(--teaser-color-title, var(--color-beijing));
@@ -43,8 +43,8 @@
 .teaser__flytitle {
   font-size: var(--text-size-step-0);
   line-height: var(--text-line-height-body-on-step-0);
-  font-weight: lighter;
-  font-family: 'Halifax Light';
+  font-weight: normal;
+  font-family: 'Halifax Regular';
   color: var(--teaser-color-flytitle, var(--color-economist));
   order: 2;
   margin: 0;
@@ -52,8 +52,8 @@
 }
 
 .teaser__text {
-  font-size: var(--text-size-step-0);
-  line-height: var(--text-line-height-body-light-on-step-0);
+  font-size: var(--text-size-step--1);
+  line-height: var(--text-line-height-body-light-on-step--1);
   font-weight: lighter;
   font-family: 'Halifax Light';
   color: var(--teaser-color-text, var(--color-beijing));
@@ -82,10 +82,13 @@
 }
 
 .teaser__img {
-  min-width: var(--teaser-min-img-width, 200px);
   width: 100%;
   margin-bottom: var(--grid-spacing-sheep);
   border: none;
+}
+
+.teaser__group-image {
+  width: var(--teaser-img-width, 10em);
 }
 
 .teaser__group-image--empty {
@@ -93,19 +96,14 @@
 }
 
 @media (--viewport-big) {
-  .teaser__link,
-  .teaser__wrapper {
-    display: flex;
-  }
   .teaser__group-image {
+    float: left;
     margin-right: var(--grid-gutter-m);
-    max-width: 15em;
-    min-width: var(--teaser-min-img-width, 200px);
-    width: 30%;
   }
 
   .teaser__group-image--empty {
     display: block;
     visibility: hidden;
+    height: var(--grid-gutter-m, 1px);  /* Because if its height is zero it doesn't push group-text to the right */
   }
 }
