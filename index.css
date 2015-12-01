@@ -22,7 +22,7 @@
 .teaser__title {
   font-size: var(--text-size-step-2);
   line-height: var(--text-line-height-body-bold-on-step-2);
-  letter-spacing: var(--text-letter-spacing-body-bold-on-step-1);
+  letter-spacing: var(--text-letter-spacing-body-bold-on-step-2);
   font-weight: bold;
   font-family: 'Halifax Bold';
   color: var(--teaser-color-title, var(--color-beijing));
@@ -107,6 +107,6 @@
   .teaser__group-image--empty {
     display: block;
     visibility: hidden;
-    height: var(--grid-gutter-m, 1px);  /* Because if its height is zero it doesn't push group-text to the right */
+    min-height: var(--grid-gutter-m, 1px);  /* Because if its height is zero it doesn't push group-text to the right */
   }
 }
