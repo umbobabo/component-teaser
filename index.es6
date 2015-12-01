@@ -62,7 +62,7 @@ export default class Teaser extends React.Component {
     const groups = [];
     const imageSrc = this.props.image && this.props.image.src;
     let imageClasses = ['teaser__group-image'];
-    if (imageSrc) {
+    if (!imageSrc) {
       imageClasses = imageClasses.concat(['teaser__group-image--empty']);
     }
     const image = imageSrc ?
