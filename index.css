@@ -2,7 +2,7 @@
 @import '@economist/component-palette';
 @import '@economist/component-grid';
 
-@custom-media --viewport-big (width >= 36rem);
+@custom-media --viewport-big (width >= 44rem);
 
 .teaser {
   font-size: 1rem;
@@ -51,7 +51,7 @@
   color: var(--teaser-color-flytitle, var(--color-economist));
   order: 2;
   margin: 0;
-  margin-bottom: var(--grid-spacing-hedgehog);
+  margin-bottom: var(--grid-spacing-mouse);
 }
 
 .teaser__text {
