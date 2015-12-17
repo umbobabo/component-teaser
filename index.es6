@@ -51,7 +51,7 @@ export default class Teaser extends React.Component {
         let minutes = date.getMinutes() < 10 ? '0' : '';
         minutes += date.getMinutes();
         return `${shortMonthList[date.getMonth()]}
-                ${addPostFix(date.getDay())}
+                ${addPostFix(date.getDate())}
                 ${date.getFullYear()},
                 ${date.getHours()}:${minutes}`;
       },
