@@ -69,6 +69,22 @@ describe(`A teaser`, () => {
       elm.props.className.should.be.equal('teaser__datetime');
       elm.props.children.should.be.equal(today.toString());
     });
+    it(`renders a dateString and an ISO timestamp`, () => {
+      const today = 'someday';
+      const todayISO = 'somedayISO';
+      const teaser = TestUtils.renderIntoDocument(
+        <Teaser
+          title="Required"
+          teaserId={'1'}
+          dateString={today}
+          timestampISO={todayISO}
+        />
+      );
+      const elm = TestUtils.findRenderedDOMComponentWithClass(
+        teaser, 'teaser__datetime');
+      elm.props.children.should.equal('someday');
+      elm.props.dateTime.should.equal('somedayISO');
+    });
     it(`it renders a text`, () => {
       const teaser = TestUtils.renderIntoDocument(
         <Teaser

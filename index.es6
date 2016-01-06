@@ -11,6 +11,8 @@ export default class Teaser extends React.Component {
       flyTitle: React.PropTypes.string,
       title: React.PropTypes.string.isRequired,
       dateTime: React.PropTypes.instanceOf(Date),
+      dateString: React.PropTypes.string,
+      timestampISO: React.PropTypes.string,
       dateFormat: React.PropTypes.func,
       text: React.PropTypes.string,
       link: React.PropTypes.shape({
@@ -108,6 +110,15 @@ export default class Teaser extends React.Component {
           dateTime={this.props.dateTime}
           key={`teaser__datetime_${this.props.teaserId}`}
         >{this.props.dateFormat(this.props.dateTime)}</time>));
+    }
+    if (this.props.dateString && this.props.timestampISO) {
+      teaserContent.push((
+        <time
+          className="teaser__datetime"
+          itemProp="dateCreated"
+          dateTime={this.props.timestampISO}
+          key={`teaser__datetime`}
+        >{this.props.dateString}</time>));
     }
     if (this.props.text) {
       teaserContent.push((
