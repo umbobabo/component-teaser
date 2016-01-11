@@ -4,14 +4,20 @@ export default class Teaser extends React.Component {
   static get propTypes() {
     return {
       teaserId: React.PropTypes.string.isRequired,
-      image: React.PropTypes.object,
+      image: React.PropTypes.shape({
+        src: React.PropTypes.string,
+      }),
       section: React.PropTypes.string,
       flyTitle: React.PropTypes.string,
       title: React.PropTypes.string.isRequired,
       dateTime: React.PropTypes.instanceOf(Date),
-      dateFormat: React.PropTypes.instanceOf(Function),
+      dateString: React.PropTypes.string,
+      timestampISO: React.PropTypes.string,
+      dateFormat: React.PropTypes.func,
       text: React.PropTypes.string,
-      link: React.PropTypes.object,
+      link: React.PropTypes.shape({
+        href: React.PropTypes.string,
+      }),
       itemType: React.PropTypes.string,
       itemProp: React.PropTypes.string,
     };
@@ -47,7 +53,7 @@ export default class Teaser extends React.Component {
         let minutes = date.getMinutes() < 10 ? '0' : '';
         minutes += date.getMinutes();
         return `${shortMonthList[date.getMonth()]}
-                ${addPostFix(date.getDay())}
+                ${addPostFix(date.getDate())}
                 ${date.getFullYear()},
                 ${date.getHours()}:${minutes}`;
       },
@@ -56,17 +62,20 @@ export default class Teaser extends React.Component {
   render() {
     const teaserContent = [];
     const groups = [];
-    if (this.props.image) {
-      groups.push((
-        <div className="teaser__group-image"
-          key={`teaser__group-image_${this.props.teaserId}`}
-        >
-          <img {...this.props.image}
-            itemProp="image"
-            className="teaser__img"
-          />
-        </div>));
+    const imageSrc = this.props.image && this.props.image.src;
+    let imageClasses = ['teaser__group-image'];
+    if (!imageSrc) {
+      imageClasses = imageClasses.concat(['teaser__group-image--empty']);
     }
+    const image = imageSrc ?
+      (<img {...this.props.image} itemProp="image" className="teaser__img" />) :
+      null;
+    groups.push((
+      <div className={imageClasses.join(' ')}
+        key={`teaser__group-image_${this.props.teaserId}`}
+      >
+        {image}
+      </div>));
     if (this.props.section) {
       teaserContent.push((
         <h3
@@ -101,6 +110,15 @@ export default class Teaser extends React.Component {
           dateTime={this.props.dateTime}
           key={`teaser__datetime_${this.props.teaserId}`}
         >{this.props.dateFormat(this.props.dateTime)}</time>));
+    }
+    if (this.props.dateString && this.props.timestampISO) {
+      teaserContent.push((
+        <time
+          className="teaser__datetime"
+          itemProp="dateCreated"
+          dateTime={this.props.timestampISO}
+          key={`teaser__datetime`}
+        >{this.props.dateString}</time>));
     }
     if (this.props.text) {
       teaserContent.push((
