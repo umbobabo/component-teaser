@@ -20,12 +20,12 @@
 }
 
 .teaser__title {
-  font-size: var(--text-size-step-2);
-  line-height: var(--text-line-height-body-bold-on-step-2);
-  letter-spacing: var(--text-letter-spacing-body-bold-on-step-2);
-  font-weight: bold;
   /* Change this when font is available */
   font-family: 'FF Milo Serif OT Medium';
+  font-size: var(--text-size-step-2);
+  line-height: var(--text-line-height-serif-medium-on-step-2);
+  letter-spacing: var(--text-letter-spacing-serif-medium-on-step-2);
+  font-weight: normal;
   color: var(--teaser-color-title, var(--color-beijing));
   order: 3;
   margin: 0;
@@ -34,7 +34,7 @@
 
 .teaser__section {
   font-size: var(--text-size-step--2);
-  line-height: var(--text-line-height-body-on-step--2);
+  line-height: var(--text-line-height-sans-on-step--2);
   text-transform: uppercase;
   font-weight: lighter;
   font-family: 'Halifax Light';
@@ -46,7 +46,7 @@
 
 .teaser__flytitle {
   font-size: var(--text-size-step--1);
-  line-height: var(--text-line-height-body-on-step--1);
+  line-height: var(--text-line-height-sans-on-step--1);
   font-weight: normal;
   font-family: 'Halifax Regular';
   color: var(--teaser-color-flytitle, var(--color-economist));
@@ -57,7 +57,7 @@
 
 .teaser__text {
   font-size: var(--text-size-step--2);
-  line-height: var(--text-line-height-body-light-on-step--2);
+  line-height: var(--text-line-height-sans-light-on-step--2);
   font-weight: lighter;
   font-family: 'Halifax Light';
   color: var(--teaser-color-text, var(--color-beijing));
@@ -68,7 +68,7 @@
 .teaser__datetime {
   font-size: var(--text-size-step--4);
   line-height: var(--text-line-height-basic);
-  letter-spacing: var(--text-letter-spacing-body-light-on-step--2);
+  letter-spacing: var(--text-letter-spacing-sans-light-on-step--2);
   font-weight: lighter;
   font-family: 'Halifax Light';
   color: var(--teaser-color-datetime, var(--color-moscow));
